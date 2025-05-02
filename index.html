@@ -1,87 +1,93 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andromeda Token</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: url('bg.jpg') no-repeat center center fixed;
-      background-size: cover;
       font-family: Arial, sans-serif;
+      background-color: black;
       color: white;
       text-align: center;
     }
-    header {
+    .background {
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    p.subtitle {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+    }
+    .menu {
       position: absolute;
       top: 20px;
       right: 20px;
     }
     select {
-      padding: 8px;
-      font-size: 16px;
-      border-radius: 5px;
+      padding: 10px;
+      font-size: 1em;
     }
-    section {
+    .content-section {
       display: none;
-      background-color: rgba(0, 0, 0, 0.8);
       padding: 20px;
-      margin: 100px auto;
-      max-width: 600px;
-      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.85);
     }
-    #home {
+    .show {
       display: block;
-      margin-top: 50vh;
-      transform: translateY(-50%);
-    }
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 20px;
     }
   </style>
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('show'));
+      const active = document.getElementById(id);
+      if (active) {
+        active.classList.add('show');
+      }
+    }
+  </script>
 </head>
 <body>
-  <header>
-    <select onchange="showSection(this.value)">
-      <option value="home">Меню</option>
-      <option value="about">Относно</option>
-      <option value="whitepaper">Бяла книга</option>
-      <option value="roadmap">Пътна карта</option>
-      <option value="buy">Купи</option>
-      <option value="contact">Контакт</option>
-    </select>
-  </header>  <section id="home">
+  <div class="background">
+    <div class="menu">
+      <select onchange="showSection(this.value)">
+        <option value="">Меню</option>
+        <option value="buy">Купи</option>
+        <option value="about">Относно</option>
+        <option value="whitepaper">Бяла книга</option>
+        <option value="roadmap">Пътна карта</option>
+      </select>
+    </div>
     <h1>ANDROMEDA</h1>
-    <p>The future is in your hands.</p>
-  </section>  <section id="about">
-    <h2>Относно проекта</h2>
-    <p>Andromeda е BEP20 токен в мрежата на BNB Smart Chain с визия за децентрализация и общностно управление.</p>
-  </section>  <section id="whitepaper">
-    <h2>Бяла книга</h2>
-    <a href="Андромеда_Бяла книга.pdf" target="_blank">Изтегли PDF</a>
-  </section>  <section id="roadmap">
-    <h2>Пътна карта</h2>
-    <ul>
-      <li><strong>Настоящ етап:</strong> Уебсайт онлайн, Бяла книга качена</li>
-      <li><strong>Следващи стъпки:</strong> Пазарна листинговация, маркетинг</li>
-    </ul>
-  </section>  <section id="buy">
+    <p class="subtitle">The future is in your hands.</p>
+  </div>  <div id="buy" class="content-section">
     <h2>Купи токена</h2>
     <p>Линк към PancakeSwap или друг DEX тук...</p>
-  </section>  <section id="contact">
-    <h2>Контакт</h2>
-    <p>Email: andromedatoken01@gmail.com</p>
-  </section>  <script>
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
-  </script></body>
+  </div>  <div id="about" class="content-section">
+    <h2>Относно</h2>
+    <p>Andromeda е BEP20 токен на BNB Smart Chain с дългосрочна визия за децентрализирана финансова система и управление от общността.</p>
+  </div>  <div id="whitepaper" class="content-section">
+    <h2>Бяла книга</h2>
+    <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтегли PDF</a></p>
+  </div>  <div id="roadmap" class="content-section">
+    <h2>Пътна карта</h2>
+    <ul>
+      <li><strong>Настоящ етап:</strong> Стартиран токен, качен уайтпейпър, уебсайт.</li>
+      <li><strong>Следващи стъпки:</strong> Промоция, листинг, маркетинг.</li>
+    </ul>
+  </div>
+</body>
 </html>
 
     
