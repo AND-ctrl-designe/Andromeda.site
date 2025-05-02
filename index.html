@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="bg">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,83 +7,100 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('bg.jpg') no-repeat center center fixed;
+      background-image: url('bg.jpg');
       background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: white;
       text-align: center;
-    }#menu-container {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 999;
-}
-
-select {
-  font-size: 16px;
-  padding: 5px;
-}
-
-.section {
-  display: none;
-  padding: 50px 20px;
-  background: rgba(0, 0, 0, 0.7);
+    }.overlay {
+  background-color: rgba(0, 0, 0, 0.65);
   min-height: 100vh;
+  padding: 20px;
 }
 
-#home {
-  display: block;
-  padding-top: 100px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
-.main-logo {
-  max-width: 300px;
-  height: auto;
+.menu {
+  padding: 10px;
+  font-size: 16px;
 }
 
-.headline {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin: 0;
+h1 {
+  font-size: 48px;
+  margin-top: 100px;
 }
 
-.tagline {
-  font-size: 1.5em;
-  margin-top: 10px;
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+section {
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+a {
+  color: #00ccff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
   </style>
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-      if (id === 'home') {
-        document.body.style.backgroundImage = "url('bg.jpg')";
-      } else {
-        document.body.style.backgroundImage = "url('file_0000000028f062469cd3d821e509e640.png')";
-      }
-    }
-  </script>
 </head>
 <body>
-  <div id="menu-container">
-    <select onchange="showSection(this.value)">
-      <option value="home">Меню</option>
-      <option value="whitepaper">Бяла книга</option>
-      <option value="contact">Контакт</option>
-    </select>
-  </div>  <div id="home" class="section">
-    <img src="лого.png" alt="Andromeda logo" class="main-logo">
-    <h1 class="headline">ANDROMEDA</h1>
-    <p class="tagline">The future is in your hands.</p>
-  </div>  <div id="whitepaper" class="section">
+  <div class="overlay">
+    <header>
+      <div></div>
+      <select class="menu" onchange="navigate(this)">
+        <option value="">Меню</option>
+        <option value="whitepaper">Бяла книга</option>
+        <option value="buy">Купи токена</option>
+        <option value="roadmap">Пътна карта</option>
+        <option value="contact">Контакт</option>
+      </select>
+    </header><main>
+  <h1>АНДРОМЕДА</h1>
+  <div class="subtitle">Бъдещето е във вашите ръце.</div>
+  <section id="whitepaper">
     <h2>Бяла книга</h2>
-    <p><a href="Андромеда_Бяла книга.pdf" style="color:lightblue">Изтеглете PDF</a></p>
-  </div>  <div id="contact" class="section">
+    <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a></p>
+  </section>
+
+  <section id="buy">
+    <h2>Купи токена</h2>
+    <p><a href="https://pancakeswap.finance" target="_blank">Към PancakeSwap</a></p>
+  </section>
+
+  <section id="roadmap">
+    <h2>Пътна карта</h2>
+    <p>Очаквайте скоро нови етапи и цели по пътя на Andromeda.</p>
+  </section>
+
+  <section id="contact">
     <h2>Контакт</h2>
-    <p>Официален имейл: andromedatoken01@gmail.com</p>
-  </div>
-</body>
+    <p>Свържете се с нас на andromedatoken01@gmail.com</p>
+  </section>
+</main>
+
+  </div>  <script>
+    function navigate(select) {
+      const value = select.value;
+      if (value) {
+        document.getElementById(value).scrollIntoView({ behavior: 'smooth' });
+      }
+      select.selectedIndex = 0;
+    }
+  </script></body>
 </html>
 
     
