@@ -1,123 +1,126 @@
 <!DOCTYPE html><html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andromeda Token</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
-            text-align: center;
-        }
-        .main-section, .menu-section {
-            display: none;
-            padding: 20px;
-        }
-        .main-section.active, .menu-section.active {
-            display: block;
-        }
-        .background {
-            background-image: url("bg.jpg");
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .logo {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        p.subtitle {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        select {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 8px;
-            font-size: 1em;
-        }
-        .link {
-            color: #00ccff;
-            text-decoration: none;
-        }
-        .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #00ccff;
-            border: none;
-            color: black;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andromeda Token</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: url('bg.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    header img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    select {
+      font-size: 1em;
+      padding: 5px;
+    }
+    section {
+      padding: 20px;
+    }
+    #menuContent {
+      display: none;
+      background: url('file_0000000028f062469cd3d821e509e640.png') no-repeat center center/cover;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+    .menu-section {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+    a {
+      color: #40cfff;
+      text-decoration: none;
+    }
+    .back-button {
+      margin-top: 20px;
+      background: #40cfff;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <select id="menu" onchange="navigateMenu()">
-        <option value="">Меню</option>
-        <option value="whitepaper">Бяла книга</option>
-        <option value="buy">Купи токена</option>
-        <option value="roadmap">Пътна карта</option>
-        <option value="contact">Контакт</option>
-    </select><div class="background main-section active" id="home">
-    <img src="лого.png" alt="Andromeda Logo" class="logo">
+  <nav>
+    <select onchange="navigate(this)">
+      <option>Меню</option>
+      <option value="whitepaper">Бяла книга</option>
+      <option value="buy">Купи токена</option>
+      <option value="roadmap">Пътна карта</option>
+      <option value="contact">Контакт</option>
+    </select>
+  </nav>
+  <header id="main">
+    <img src="лого.png" alt="Лого">
     <h1>ANDROMEDA</h1>
-    <p class="subtitle">The future is in your hands.</p>
-</div>
-
-<div class="menu-section" id="whitepaper">
-    <h2>Бяла книга</h2>
-    <a class="link" href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a>
-    <br><button class="back-button" onclick="goHome()">Назад</button>
-</div>
-
-<div class="menu-section" id="buy">
-    <h2>Купи токена</h2>
-    <a class="link" href="https://pancakeswap.finance" target="_blank">Към PancakeSwap</a>
-    <br><button class="back-button" onclick="goHome()">Назад</button>
-</div>
-
-<div class="menu-section" id="roadmap">
-    <h2>Пътна карта</h2>
-    <p>Очаквайте скоро нови етапи и цели по пътя на Андромеда.</p>
-    <br><button class="back-button" onclick="goHome()">Назад</button>
-</div>
-
-<div class="menu-section" id="contact">
-    <h2>Контакт</h2>
-    <p>Свържете се с нас на andromedatoken01@gmail.com</p>
-    <br><button class="back-button" onclick="goHome()">Назад</button>
-</div>
-
-<script>
-    function navigateMenu() {
-        const value = document.getElementById("menu").value;
-        document.querySelectorAll('.main-section, .menu-section').forEach(s => s.classList.remove('active'));
-        if (value && document.getElementById(value)) {
-            document.getElementById(value).classList.add('active');
-        } else {
-            document.getElementById("home").classList.add('active');
-        }
+    <p>The future is in your hands.</p>
+  </header>  <div id="menuContent">
+    <div class="menu-section" id="whitepaper">
+      <h2>Бяла книга</h2>
+      <a href="Андромеда_Бяла книга.pdf" download>Изтеглете PDF</a>
+    </div>
+    <div class="menu-section" id="buy">
+      <h2>Купи токена</h2>
+      <a href="#">Към PancakeSwap</a>
+    </div>
+    <div class="menu-section" id="roadmap">
+      <h2>Пътна карта</h2>
+      <p>Очаквайте скоро нови етапи и цели по пътя на Андромеда.</p>
+    </div>
+    <div class="menu-section" id="contact">
+      <h2>Контакт</h2>
+      <p>Свържете се с нас: andromedatoken01@gmail.com</p>
+    </div>
+    <button class="back-button" onclick="goBack()">Назад</button>
+  </div>  <script>
+    function navigate(select) {
+      const value = select.value;
+      if (value !== 'Меню') {
+        document.getElementById('main').style.display = 'none';
+        document.getElementById('menuContent').style.display = 'block';
+        const sections = document.querySelectorAll('.menu-section');
+        sections.forEach(s => s.style.display = 'none');
+        document.getElementById(value).style.display = 'block';
+      }
     }
-
-    function goHome() {
-        document.getElementById("menu").value = "";
-        navigateMenu();
+    function goBack() {
+      document.getElementById('menuContent').style.display = 'none';
+      document.getElementById('main').style.display = 'flex';
     }
-</script>
-
-</body>
+  </script></body>
 </html>
 
     
