@@ -1,102 +1,102 @@
 <!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andromeda Token</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-    }#menu-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-select {
-  font-size: 16px;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-#menu-content {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url('file_0000000028f062469cd3d821e509e640.png');
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-  color: white;
-  font-size: 32px;
-  padding-top: 20vh;
-}
-
-#main-banner {
-  margin-top: 20vh;
-}
-
-#main-banner img {
-  max-width: 300px;
-}
-
-#main-banner h1 {
-  font-size: 48px;
-  margin: 0;
-}
-
-#main-banner p {
-  font-size: 24px;
-  margin: 10px 0 0;
-}
-
-  </style>
-</head><body>
-  <div id="menu-container">
-    <select onchange="handleMenuChange(this)">
-      <option>Меню</option>
-      <option value="whitepaper">Бяла книга</option>
-      <option value="buy">Купи токена</option>
-      <option value="roadmap">Пътна карта</option>
-      <option value="contact">Контакт</option>
-    </select>
-  </div>  <div id="main-banner">
-    <img src="лого.png" alt="Andromeda Logo">
-    <h1>ANDROMEDA</h1>
-    <p>The future is in your hands.</p>
-  </div>  <div id="menu-content"></div>  <script>
-    function handleMenuChange(select) {
-      const value = select.value;
-      const content = document.getElementById("menu-content");
-      content.style.display = "block";
-
-      let html = "";
-      switch (value) {
-        case "whitepaper":
-          html = "<h2>Бяла книга</h2><a href='Андромеда_Бяла книга.pdf' target='_blank' style='color: #00f;'>Изтеглете PDF</a>";
-          break;
-        case "buy":
-          html = "<h2>Купи токена</h2><p>Линк към PancakeSwap или друг DEX тук…</p>";
-          break;
-        case "roadmap":
-          html = "<h2>Пътна карта</h2><p>Етапи: стартиране, маркетинг, листинг...</p>";
-          break;
-        case "contact":
-          html = "<h2>Контакт</h2><p>Свържете се с нас: andromedatoken01@gmail.com</p>";
-          break;
-        default:
-          content.style.display = "none";
-          return;
-      }
-      content.innerHTML = html;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andromeda Token</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }#main {
+        background-image: url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: background-image 0.5s ease-in-out;
     }
-  </script></body></html>
+
+    #content {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 12px;
+        max-width: 90%;
+    }
+
+    select {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+    a {
+        color: #00cfff;
+        text-decoration: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+</head><body>
+    <select id="menu" onchange="navigate()">
+        <option value="home">Меню</option>
+        <option value="whitepaper">Бяла книга</option>
+        <option value="contact">Контакт</option>
+    </select><div id="main">
+    <div id="homeContent" class="content-block">
+        <img src="лого.png" alt="Лого на Андромеда" style="max-width: 250px;">
+        <h1 style="margin-top: 20px; font-size: 40px;">ANDROMEDA</h1>
+        <p style="font-size: 20px;">The future is in your hands.</p>
+    </div>
+
+    <div id="whitepaperContent" class="content-block hidden">
+        <h2>Бяла книга</h2>
+        <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a></p>
+        <button onclick="goBack()">Назад</button>
+    </div>
+
+    <div id="contactContent" class="content-block hidden">
+        <h2>Контакт</h2>
+        <p>andromedatoken01@gmail.com</p>
+        <button onclick="goBack()">Назад</button>
+    </div>
+</div>
+
+<script>
+    function navigate() {
+        const value = document.getElementById("menu").value;
+        document.querySelectorAll(".content-block").forEach(block => block.classList.add("hidden"));
+
+        switch (value) {
+            case "whitepaper":
+                document.getElementById("main").style.backgroundImage = "url('file_0000000028f062469cd3d821e509e640.png')";
+                document.getElementById("whitepaperContent").classList.remove("hidden");
+                break;
+            case "contact":
+                document.getElementById("main").style.backgroundImage = "url('file_0000000028f062469cd3d821e509e640.png')";
+                document.getElementById("contactContent").classList.remove("hidden");
+                break;
+            default:
+                document.getElementById("main").style.backgroundImage = "url('bg.jpg')";
+                document.getElementById("homeContent").classList.remove("hidden");
+        }
+    }
+
+    function goBack() {
+        document.getElementById("menu").value = "home";
+        navigate();
+    }
+</script>
+
+</body></html>
 
     
