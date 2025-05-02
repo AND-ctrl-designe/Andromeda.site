@@ -1,106 +1,123 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andromeda Token</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
-      text-align: center;
-    }.overlay {
-  background-color: rgba(0, 0, 0, 0.65);
-  min-height: 100vh;
-  padding: 20px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.menu {
-  padding: 10px;
-  font-size: 16px;
-}
-
-h1 {
-  font-size: 48px;
-  margin-top: 100px;
-}
-
-.subtitle {
-  font-size: 20px;
-  margin-bottom: 50px;
-}
-
-section {
-  margin: 50px auto;
-  max-width: 800px;
-}
-
-a {
-  color: #00ccff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andromeda Token</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+        .main-section, .menu-section {
+            display: none;
+            padding: 20px;
+        }
+        .main-section.active, .menu-section.active {
+            display: block;
+        }
+        .background {
+            background-image: url("bg.jpg");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        p.subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        select {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px;
+            font-size: 1em;
+        }
+        .link {
+            color: #00ccff;
+            text-decoration: none;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #00ccff;
+            border: none;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div class="overlay">
-    <header>
-      <div></div>
-      <select class="menu" onchange="navigate(this)">
+    <select id="menu" onchange="navigateMenu()">
         <option value="">Меню</option>
         <option value="whitepaper">Бяла книга</option>
         <option value="buy">Купи токена</option>
         <option value="roadmap">Пътна карта</option>
         <option value="contact">Контакт</option>
-      </select>
-    </header><main>
-  <h1>АНДРОМЕДА</h1>
-  <div class="subtitle">Бъдещето е във вашите ръце.</div>
-  <section id="whitepaper">
+    </select><div class="background main-section active" id="home">
+    <img src="лого.png" alt="Andromeda Logo" class="logo">
+    <h1>ANDROMEDA</h1>
+    <p class="subtitle">The future is in your hands.</p>
+</div>
+
+<div class="menu-section" id="whitepaper">
     <h2>Бяла книга</h2>
-    <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a></p>
-  </section>
+    <a class="link" href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a>
+    <br><button class="back-button" onclick="goHome()">Назад</button>
+</div>
 
-  <section id="buy">
+<div class="menu-section" id="buy">
     <h2>Купи токена</h2>
-    <p><a href="https://pancakeswap.finance" target="_blank">Към PancakeSwap</a></p>
-  </section>
+    <a class="link" href="https://pancakeswap.finance" target="_blank">Към PancakeSwap</a>
+    <br><button class="back-button" onclick="goHome()">Назад</button>
+</div>
 
-  <section id="roadmap">
+<div class="menu-section" id="roadmap">
     <h2>Пътна карта</h2>
-    <p>Очаквайте скоро нови етапи и цели по пътя на Andromeda.</p>
-  </section>
+    <p>Очаквайте скоро нови етапи и цели по пътя на Андромеда.</p>
+    <br><button class="back-button" onclick="goHome()">Назад</button>
+</div>
 
-  <section id="contact">
+<div class="menu-section" id="contact">
     <h2>Контакт</h2>
     <p>Свържете се с нас на andromedatoken01@gmail.com</p>
-  </section>
-</main>
+    <br><button class="back-button" onclick="goHome()">Назад</button>
+</div>
 
-  </div>  <script>
-    function navigate(select) {
-      const value = select.value;
-      if (value) {
-        document.getElementById(value).scrollIntoView({ behavior: 'smooth' });
-      }
-      select.selectedIndex = 0;
+<script>
+    function navigateMenu() {
+        const value = document.getElementById("menu").value;
+        document.querySelectorAll('.main-section, .menu-section').forEach(s => s.classList.remove('active'));
+        if (value && document.getElementById(value)) {
+            document.getElementById(value).classList.add('active');
+        } else {
+            document.getElementById("home").classList.add('active');
+        }
     }
-  </script></body>
+
+    function goHome() {
+        document.getElementById("menu").value = "";
+        navigateMenu();
+    }
+</script>
+
+</body>
 </html>
 
     
