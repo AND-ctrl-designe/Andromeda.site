@@ -3,46 +3,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andromeda Token</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('лого.png') center center no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    nav select {
+      padding: 10px;
+      font-size: 16px;
+    }
+    .background-rotate {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('енигма.jpg') center center no-repeat;
+      background-size: cover;
+      z-index: -1;
+      animation: rotate 360s linear infinite;
+      opacity: 0.2;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    main {
+      padding: 2em;
+    }
+    img.full-width {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 2em auto;
+    }
+  </style>
 </head>
 <body>
+  <div class="background-rotate"></div>
   <header>
-    <img src="лого.png" alt="Andromeda Logo" class="logo">
     <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#whitepaper">Whitepaper</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#invest">Invest</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <select onchange="location = this.value;">
+        <option value="#">Menu</option>
+        <option value="#about">About</option>
+        <option value="#whitepaper">Whitepaper</option>
+        <option value="#roadmap">Roadmap</option>
+        <option value="#invest">Invest</option>
+        <option value="#contact">Contact</option>
+      </select>
     </nav>
-  </header>  <section id="hero">
-    <h1>Andromeda (AND) Token</h1>
-    <p>Reviving the true value of cryptocurrency – power, profit, and participation to the people.</p>
-  </section>  <section id="office">
-    <h2>Mike & En Invest</h2>
-    <img src="mike_en_office.jpg" alt="Mike & En Invest Office" style="width:100%; border-radius: 12px; margin-top: 20px;">
-  </section>  <section id="about">
-    <h2>About the Project</h2>
-    <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower the decentralized ecosystem. Our mission is to revive the decentralized spirit through transparent tokenomics, community governance, and real-world utility.</p>
-  </section>  <section id="whitepaper">
-    <h2>Whitepaper</h2>
-    <p>Read our detailed vision and tokenomics:</p>
-    <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
-  </section>  <section id="roadmap">
-    <h2>Roadmap</h2>
-    <ul>
-      <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website active</li>
-      <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing push, Community growth</li>
-    </ul>
-  </section>  <section id="invest">
-    <h2>Investors Welcome</h2>
-    <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair and growing ecosystem.</p>
-  </section>  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: andromedatoken01@gmail.com</p>
-  </section>  <footer>
+    <h1>ANDROMEDA</h1>
+    <p>The future is in your hands.</p>
+  </header>  <main>
+    <section id="about">
+      <h2>About the Project</h2>
+      <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
+    </section><section id="whitepaper">
+  <h2>Whitepaper</h2>
+  <p>Read our detailed vision and tokenomics:</p>
+  <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
+</section>
+
+<section id="roadmap">
+  <h2>Roadmap</h2>
+  <ul>
+    <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
+    <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
+  </ul>
+</section>
+
+<section id="invest">
+  <h2>Investors Welcome</h2>
+  <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
+</section>
+
+<img src="Майк.jpg" alt="Developer Mike" class="full-width">
+<img src="mike_en_office.jpg" alt="Mike & En Invest Office" class="full-width">
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: andromedatoken01@gmail.com</p>
+</section>
+
+  </main>  <footer>
     <p>&copy; 2025 Andromeda Token. All rights reserved.</p>
   </footer>
 </body>
