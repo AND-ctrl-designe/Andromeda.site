@@ -1,110 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andromeda Token</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: black;
-      color: white;
-      text-align: center;
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center;
-    }
+      color: white;
+      text-align: center;
+    }#menu-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 
-    #main-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+select {
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+}
 
-    #menu {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 10px;
-    }
+#menu-content {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('file_0000000028f062469cd3d821e509e640.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  font-size: 32px;
+  padding-top: 20vh;
+}
 
-    #content {
-      display: none;
-      padding: 40px 20px;
-      background-color: black;
-      min-height: 100vh;
-    }
+#main-banner {
+  margin-top: 20vh;
+}
 
-    h1 {
-      font-size: 48px;
-      margin: 0;
-    }
+#main-banner img {
+  max-width: 300px;
+}
 
-    p {
-      font-size: 20px;
-      margin-top: 10px;
-    }
+#main-banner h1 {
+  font-size: 48px;
+  margin: 0;
+}
 
-    a {
-      color: #00bfff;
-      text-decoration: none;
-    }
+#main-banner p {
+  font-size: 24px;
+  margin: 10px 0 0;
+}
+
   </style>
-</head>
-<body>
-
-  <select id="menu" onchange="showSection(this.value)">
-    <option value="">Меню</option>
-    <option value="whitepaper">Бяла книга</option>
-    <option value="roadmap">Пътна карта</option>
-    <option value="contact">Контакт</option>
-  </select>
-
-  <div id="main-content">
-    <img src="лого.png" alt="Andromeda Logo" style="max-width: 250px;">
+</head><body>
+  <div id="menu-container">
+    <select onchange="handleMenuChange(this)">
+      <option>Меню</option>
+      <option value="whitepaper">Бяла книга</option>
+      <option value="buy">Купи токена</option>
+      <option value="roadmap">Пътна карта</option>
+      <option value="contact">Контакт</option>
+    </select>
+  </div>  <div id="main-banner">
+    <img src="лого.png" alt="Andromeda Logo">
     <h1>ANDROMEDA</h1>
     <p>The future is in your hands.</p>
-  </div>
+  </div>  <div id="menu-content"></div>  <script>
+    function handleMenuChange(select) {
+      const value = select.value;
+      const content = document.getElementById("menu-content");
+      content.style.display = "block";
 
-  <div id="content"></div>
-
-  <script>
-    function showSection(section) {
-      const mainContent = document.getElementById('main-content');
-      const content = document.getElementById('content');
-
-      mainContent.style.display = 'none';
-      content.style.display = 'block';
-
-      if (section === 'whitepaper') {
-        content.innerHTML = `
-          <h2>Бяла книга</h2>
-          <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a></p>
-        `;
-      } else if (section === 'roadmap') {
-        content.innerHTML = `
-          <h2>Пътна карта</h2>
-          <ul style="list-style: none; padding: 0;">
-            <li><strong>Текуща фаза:</strong> Активен токен, уайтпейпър, сайт</li>
-            <li><strong>Следващи стъпки:</strong> Маркетинг, листинг, партньорства</li>
-          </ul>
-        `;
-      } else if (section === 'contact') {
-        content.innerHTML = `
-          <h2>Контакт</h2>
-          <p>Email: andromedatoken01@gmail.com</p>
-        `;
-      } else {
-        mainContent.style.display = 'flex';
-        content.style.display = 'none';
+      let html = "";
+      switch (value) {
+        case "whitepaper":
+          html = "<h2>Бяла книга</h2><a href='Андромеда_Бяла книга.pdf' target='_blank' style='color: #00f;'>Изтеглете PDF</a>";
+          break;
+        case "buy":
+          html = "<h2>Купи токена</h2><p>Линк към PancakeSwap или друг DEX тук…</p>";
+          break;
+        case "roadmap":
+          html = "<h2>Пътна карта</h2><p>Етапи: стартиране, маркетинг, листинг...</p>";
+          break;
+        case "contact":
+          html = "<h2>Контакт</h2><p>Свържете се с нас: andromedatoken01@gmail.com</p>";
+          break;
+        default:
+          content.style.display = "none";
+          return;
       }
+      content.innerHTML = html;
     }
-  </script>
-
-</body>
-</html>
+  </script></body></html>
 
     
