@@ -1,3 +1,6 @@
+
+
+  
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,70 +14,79 @@
       color: white;
       text-align: center;
     }
-    #menu {
+    header {
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+    }
+    select {
       position: absolute;
       top: 20px;
       right: 20px;
+      padding: 10px;
+      font-size: 1em;
     }
-    select {
-      padding: 8px;
-      font-size: 16px;
-    }
-    .section {
+    section {
       display: none;
       padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    #home {
-      display: block;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+    a { color: #00bfff; }
   </style>
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(sec => sec.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
-  </script>
 </head>
 <body>
-  <div id="menu">
-    <select onchange="showSection(this.value)">
-      <option value="home">Menu</option>
+  <header>
+    <h1><strong>ANDROMEDA</strong></h1>
+    <p>The future is in your hands.</p>
+    <select id="menu" onchange="navigate(this.value)">
+      <option selected disabled>Menu</option>
       <option value="about">About</option>
       <option value="whitepaper">Whitepaper</option>
       <option value="roadmap">Roadmap</option>
       <option value="invest">Invest</option>
       <option value="contact">Contact</option>
     </select>
-  </div>  <div id="home" class="section">
-    <img src="лого.png" alt="Andromeda Banner">
-  </div>  <div id="about" class="section">
+  </header>  <section id="about">
     <h2>About the Project</h2>
     <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
-  </div>  <div id="whitepaper" class="section">
+  </section>  <section id="whitepaper">
     <h2>Whitepaper</h2>
     <p>Read our detailed vision and tokenomics:</p>
     <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
-  </div>  <div id="roadmap" class="section">
+  </section>  <section id="roadmap">
     <h2>Roadmap</h2>
-    <ul>
+    <ul style="text-align:left">
       <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
       <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
     </ul>
-  </div>  <div id="invest" class="section">
+  </section>  <section id="invest">
     <h2>Investors Welcome</h2>
     <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
-  </div>  <div id="contact" class="section">
+  </section>  <section id="contact">
     <h2>Contact</h2>
     <p>Email: andromedatoken01@gmail.com</p>
-  </div></body>
+  </section>  <script>
+    function navigate(id) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(sec => sec.style.display = 'none');
+      const selected = document.getElementById(id);
+      if (selected) selected.style.display = 'block';
+    }
+  </script></body>
 </html>
-
-  
-
 
     
