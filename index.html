@@ -7,103 +7,70 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-    header {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: url('лого.png') center center no-repeat;
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background-color: black;
+      color: white;
       text-align: center;
     }
-    nav {
+    .hero-section {
+      position: relative;
+    }
+    .main-banner {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .dropdown {
       position: absolute;
       top: 20px;
       right: 20px;
-    }
-    nav select {
+      background-color: #333;
+      color: white;
+      border: none;
       padding: 10px;
-      font-size: 16px;
     }
-    .background-rotate {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('енигма.jpg') center center no-repeat;
-      background-size: cover;
-      z-index: -1;
-      animation: rotate 360s linear infinite;
-      opacity: 0.2;
+    section {
+      padding: 20px;
     }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    main {
-      padding: 2em;
-    }
-    img.full-width {
-      width: 100%;
-      max-width: 600px;
-      display: block;
-      margin: 2em auto;
+    img.profile, img.office {
+      width: 250px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="background-rotate"></div>
-  <header>
-    <nav>
-      <select onchange="location = this.value;">
-        <option value="#">Menu</option>
-        <option value="#about">About</option>
-        <option value="#whitepaper">Whitepaper</option>
-        <option value="#roadmap">Roadmap</option>
-        <option value="#invest">Invest</option>
-        <option value="#contact">Contact</option>
-      </select>
-    </nav>
-    <h1>ANDROMEDA</h1>
-    <p>The future is in your hands.</p>
-  </header>  <main>
-    <section id="about">
-      <h2>About the Project</h2>
-      <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
-    </section><section id="whitepaper">
-  <h2>Whitepaper</h2>
-  <p>Read our detailed vision and tokenomics:</p>
-  <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
-</section>
-
-<section id="roadmap">
-  <h2>Roadmap</h2>
-  <ul>
-    <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
-    <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
-  </ul>
-</section>
-
-<section id="invest">
-  <h2>Investors Welcome</h2>
-  <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
-</section>
-
-<img src="Майк.jpg" alt="Developer Mike" class="full-width">
-<img src="mike_en_office.jpg" alt="Mike & En Invest Office" class="full-width">
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: andromedatoken01@gmail.com</p>
-</section>
-
-  </main>  <footer>
+  <div class="hero-section">
+    <img src="андромеда_лого_галактика.jpg" alt="Andromeda Banner" class="main-banner">
+    <h1><strong>ANDROMEDA</strong><span style="font-weight:normal"> The future is in your hands.</span></h1>
+    <select class="dropdown" onchange="location = this.value;">
+      <option value="#">Menu</option>
+      <option value="#about">About</option>
+      <option value="#whitepaper">Whitepaper</option>
+      <option value="#roadmap">Roadmap</option>
+      <option value="#invest">Invest</option>
+      <option value="#contact">Contact</option>
+    </select>
+  </div>  <section id="about">
+    <h2>About the Project</h2>
+    <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
+  </section>  <section id="whitepaper">
+    <h2>Whitepaper</h2>
+    <p>Read our detailed vision and tokenomics:</p>
+    <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
+  </section>  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <ul>
+      <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
+      <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
+    </ul>
+  </section>  <section id="invest">
+    <h2>Investors Welcome</h2>
+    <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
+    <img src="Майк.jpg" alt="Developer Mike" class="profile">
+    <img src="mike_en_office.jpg" alt="Mike & En Invest Office" class="office">
+  </section>  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: andromedatoken01@gmail.com</p>
+  </section>  <footer>
     <p>&copy; 2025 Andromeda Token. All rights reserved.</p>
   </footer>
 </body>
