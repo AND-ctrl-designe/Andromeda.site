@@ -1,92 +1,102 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andromeda Token</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: black;
+      background: black;
       color: white;
-      text-align: center;
     }
-    .background {
-      background-image: url('bg.jpg');
+
+    .hero {
+      background: url('bg.jpg') no-repeat center center;
       background-size: cover;
-      background-position: center;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      position: relative;
     }
-    h1 {
-      font-size: 3em;
-      margin: 0;
-    }
-    p.subtitle {
-      font-size: 1.2em;
-      margin-top: 0.5em;
-    }
-    .menu {
+
+    .menu-container {
       position: absolute;
       top: 20px;
       right: 20px;
     }
-    select {
-      padding: 10px;
-      font-size: 1em;
+
+    .menu-container select {
+      padding: 8px;
+      font-size: 16px;
     }
-    .content-section {
+
+    .content {
       display: none;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.85);
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
     }
-    .show {
+
+    .active {
       display: block;
     }
   </style>
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(section => section.classList.remove('show'));
-      const active = document.getElementById(id);
-      if (active) {
-        active.classList.add('show');
-      }
-    }
-  </script>
 </head>
 <body>
-  <div class="background">
-    <div class="menu">
-      <select onchange="showSection(this.value)">
-        <option value="">Меню</option>
-        <option value="buy">Купи</option>
-        <option value="about">Относно</option>
+  <div class="hero">
+    <div class="menu-container">
+      <select onchange="navigate(this)">
+        <option selected disabled>Меню</option>
+        <option value="about">За проекта</option>
         <option value="whitepaper">Бяла книга</option>
         <option value="roadmap">Пътна карта</option>
+        <option value="invest">Инвестирай</option>
+        <option value="buy">Купи</option>
+        <option value="contact">Контакт</option>
       </select>
     </div>
-    <h1>ANDROMEDA</h1>
-    <p class="subtitle">The future is in your hands.</p>
-  </div>  <div id="buy" class="content-section">
-    <h2>Купи токена</h2>
-    <p>Линк към PancakeSwap или друг DEX тук...</p>
-  </div>  <div id="about" class="content-section">
-    <h2>Относно</h2>
-    <p>Andromeda е BEP20 токен на BNB Smart Chain с дългосрочна визия за децентрализирана финансова система и управление от общността.</p>
-  </div>  <div id="whitepaper" class="content-section">
+  </div>
+
+  <div id="about" class="content">
+    <h2>За проекта</h2>
+    <p>Andromeda е BEP20 токен, изграден върху BNB Smart Chain с дългосрочни цели за децентрализация и управление от общността.</p>
+  </div>
+
+  <div id="whitepaper" class="content">
     <h2>Бяла книга</h2>
-    <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтегли PDF</a></p>
-  </div>  <div id="roadmap" class="content-section">
+    <p><a href="Андромеда_Бяла книга.pdf" target="_blank" style="color:lightblue;">Изтегли PDF</a></p>
+  </div>
+
+  <div id="roadmap" class="content">
     <h2>Пътна карта</h2>
     <ul>
-      <li><strong>Настоящ етап:</strong> Стартиран токен, качен уайтпейпър, уебсайт.</li>
-      <li><strong>Следващи стъпки:</strong> Промоция, листинг, маркетинг.</li>
+      <li><strong>Стартирано:</strong> Токенът е активен, сайтът е онлайн</li>
+      <li><strong>Следващи стъпки:</strong> Промотиране, листинг, маркетинг</li>
     </ul>
   </div>
+
+  <div id="invest" class="content">
+    <h2>Инвестирай</h2>
+    <p>Първите 10 инвеститори получават 25% бонус токени!</p>
+  </div>
+
+  <div id="buy" class="content">
+    <h2>Купи токена</h2>
+    <p>Линк към PancakeSwap ще бъде тук.</p>
+  </div>
+
+  <div id="contact" class="content">
+    <h2>Контакт</h2>
+    <p>Имейл: andromedatoken01@gmail.com</p>
+  </div>
+
+  <script>
+    function navigate(select) {
+      const sections = document.querySelectorAll('.content');
+      sections.forEach(sec => sec.classList.remove('active'));
+      const chosen = document.getElementById(select.value);
+      if (chosen) chosen.classList.add('active');
+    }
+  </script>
 </body>
 </html>
 
