@@ -12,80 +12,64 @@
       text-align: center;
     }
     .banner {
-      position: relative;
-    }
-    .banner img {
       width: 100%;
       height: auto;
-      display: block;
     }
     .menu {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 10;
+      z-index: 1000;
     }
-    .content-section {
+    .section {
       display: none;
       padding: 20px;
     }
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      margin-top: 20px;
+    .section.active {
+      display: block;
     }
   </style>
-  <script>
-    function showSection(id) {
-      var sections = document.getElementsByClassName('content-section');
-      for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = 'none';
-      }
-      document.getElementById(id).style.display = 'block';
-    }
-  </script>
 </head>
-<body>
-  <div class="banner">
-    <img src="лого.png" alt="Andromeda Banner">
-    <div class="menu">
-      <select onchange="showSection(this.value)">
-        <option selected disabled>Меню</option>
-        <option value="about">Относно</option>
-        <option value="whitepaper">Техническа документация</option>
-        <option value="roadmap">Пътна карта</option>
-        <option value="invest">Инвестирайте</option>
-        <option value="buy">Купи AND</option>
-        <option value="contact">Контакт</option>
-      </select>
-    </div>
-  </div>  <div id="about" class="content-section">
+<body>  <div class="menu">
+    <select onchange="showSection(this.value)">
+      <option value="">Меню</option>
+      <option value="about">Относно</option>
+      <option value="whitepaper">Техническа документация</option>
+      <option value="roadmap">Пътна карта</option>
+      <option value="invest">Инвестирайте</option>
+      <option value="contact">Контакт</option>
+    </select>
+  </div>  <img src="лого.png" alt="Andromeda Banner" class="banner">  <div id="about" class="section">
     <h2>About the Project</h2>
     <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
-  </div>  <div id="whitepaper" class="content-section">
+  </div>  <div id="whitepaper" class="section">
     <h2>Whitepaper</h2>
     <p>Read our detailed vision and tokenomics:</p>
     <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
-  </div>  <div id="roadmap" class="content-section">
+  </div>  <div id="roadmap" class="section">
     <h2>Roadmap</h2>
     <ul>
       <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
       <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
     </ul>
-  </div>  <div id="invest" class="content-section">
+  </div>  <div id="invest" class="section">
     <h2>Investors Welcome</h2>
     <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
-  </div>  <div id="buy" class="content-section">
-    <h2>Buy AND Tokens</h2>
-    <p>You can purchase AND directly through PancakeSwap:</p>
-    <a href="https://pancakeswap.finance/swap?outputCurrency=0x7E24106829BAbc184548B46067D9d05CAf93D44A" target="_blank">Buy on PancakeSwap</a>
-    <iframe src="https://www.geckoterminal.com/bsc/pools" title="Token Price Chart"></iframe>
-  </div>  <div id="contact" class="content-section">
+  </div>  <div id="contact" class="section">
     <h2>Contact</h2>
     <p>Email: andromedatoken01@gmail.com</p>
-  </div>
-</body>
+  </div>  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      if (id) {
+        const activeSection = document.getElementById(id);
+        if (activeSection) {
+          activeSection.classList.add('active');
+        }
+      }
+    }
+  </script></body>
 </html>
 
     
