@@ -6,70 +6,104 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
       background-color: black;
       color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
-    .banner {
+    #banner {
+      position: relative;
       width: 100%;
-      height: auto;
+      height: 100vh;
+      background: url('лого.png') no-repeat center center;
+      background-size: cover;
     }
-    .menu {
+    .dropdown {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 1000;
+      z-index: 10;
     }
-    .section {
+    .dropdown select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    #content {
+      padding: 40px;
       display: none;
-      padding: 20px;
     }
-    .section.active {
-      display: block;
+    section {
+      margin: 40px 0;
+    }
+    h2 {
+      color: white;
+    }
+    a {
+      color: cyan;
     }
   </style>
 </head>
-<body>  <div class="menu">
-    <select onchange="showSection(this.value)">
-      <option value="">Меню</option>
-      <option value="about">Относно</option>
-      <option value="whitepaper">Техническа документация</option>
-      <option value="roadmap">Пътна карта</option>
-      <option value="invest">Инвестирайте</option>
-      <option value="contact">Контакт</option>
-    </select>
-  </div>  <img src="лого.png" alt="Andromeda Banner" class="banner">  <div id="about" class="section">
-    <h2>About the Project</h2>
-    <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
-  </div>  <div id="whitepaper" class="section">
-    <h2>Whitepaper</h2>
-    <p>Read our detailed vision and tokenomics:</p>
-    <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
-  </div>  <div id="roadmap" class="section">
-    <h2>Roadmap</h2>
-    <ul>
-      <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
-      <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
-    </ul>
-  </div>  <div id="invest" class="section">
-    <h2>Investors Welcome</h2>
-    <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
-  </div>  <div id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: andromedatoken01@gmail.com</p>
-  </div>  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
-      if (id) {
-        const activeSection = document.getElementById(id);
-        if (activeSection) {
-          activeSection.classList.add('active');
-        }
+<body>
+  <div id="banner">
+    <div class="dropdown">
+      <select id="menu" onchange="navigate()">
+        <option value="">Menu</option>
+        <option value="about">About</option>
+        <option value="whitepaper">Whitepaper</option>
+        <option value="roadmap">Roadmap</option>
+        <option value="invest">Invest</option>
+        <option value="contact">Contact</option>
+        <option value="buy">Buy</option>
+      </select>
+    </div>
+  </div>
+  <div id="content">
+    <section id="about">
+      <h2>About the Project</h2>
+      <p>Andromeda is a BEP20 token built on BNB Smart Chain with long-term goals to empower decentralized finance and community-driven governance.</p>
+    </section><section id="whitepaper">
+  <h2>Whitepaper</h2>
+  <p>Read our detailed vision and tokenomics:</p>
+  <a href="Андромеда_Бяла книга.pdf" target="_blank">Download the Whitepaper (PDF)</a>
+</section>
+
+<section id="roadmap">
+  <h2>Roadmap</h2>
+  <ul>
+    <li><strong>Current Stage:</strong> Token live, Whitepaper uploaded, Website launched</li>
+    <li><strong>Next Steps:</strong> Promotion, Listings (GeckoTerminal, CMC), Marketing</li>
+  </ul>
+</section>
+
+<section id="invest">
+  <h2>Investors Welcome</h2>
+  <p>First 10 investors get +25% bonus tokens! Your chance to join early in a fair launch.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: andromedatoken01@gmail.com</p>
+</section>
+
+<section id="buy">
+  <h2>Buy Tokens</h2>
+  <p>Live price and chart will be displayed here (integration pending).</p>
+</section>
+
+  </div>
+  <script>
+    function navigate() {
+      const selection = document.getElementById('menu').value;
+      if (selection) {
+        document.getElementById('content').style.display = 'block';
+        document.querySelectorAll('#content section').forEach(s => s.style.display = 'none');
+        const section = document.getElementById(selection);
+        if (section) section.style.display = 'block';
       }
     }
-  </script></body>
+  </script>
+</body>
 </html>
 
     
