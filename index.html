@@ -1,111 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Andromeda Token</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: black;
+      background-color: black;
       color: white;
-      scroll-behavior: smooth;
-    }
-
-    .hero {
-      background: url('bg.jpg') no-repeat center center;
+      text-align: center;
+      background-image: url('bg.jpg');
       background-size: cover;
-      height: 100vh;
-      position: relative;
+      background-position: center;
     }
 
-    .menu-container {
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #menu {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 10;
+      padding: 10px;
     }
 
-    .menu-container select {
-      padding: 8px;
-      font-size: 16px;
-    }
-
-    .section {
+    #content {
       display: none;
       padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-      background-color: #111;
+      background-color: black;
+      min-height: 100vh;
     }
 
-    .active {
-      display: block;
+    h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #00bfff;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="menu-container">
-      <select onchange="navigate(this)">
-        <option selected disabled>Меню</option>
-        <option value="about">За проекта</option>
-        <option value="whitepaper">Бяла книга</option>
-        <option value="roadmap">Пътна карта</option>
-        <option value="invest">Инвестирай</option>
-        <option value="buy">Купи</option>
-        <option value="contact">Контакт</option>
-      </select>
-    </div>
+
+  <select id="menu" onchange="showSection(this.value)">
+    <option value="">Меню</option>
+    <option value="whitepaper">Бяла книга</option>
+    <option value="roadmap">Пътна карта</option>
+    <option value="contact">Контакт</option>
+  </select>
+
+  <div id="main-content">
+    <img src="лого.png" alt="Andromeda Logo" style="max-width: 250px;">
+    <h1>ANDROMEDA</h1>
+    <p>The future is in your hands.</p>
   </div>
 
-  <div id="about" class="section">
-    <h2>За проекта</h2>
-    <p>Andromeda е BEP20 токен, изграден върху BNB Smart Chain с децентрализирана визия.</p>
-  </div>
-
-  <div id="whitepaper" class="section">
-    <h2>Бяла книга</h2>
-    <p><a href="Андромеда_Бяла книга.pdf" target="_blank" style="color:lightblue;">Изтегли PDF</a></p>
-  </div>
-
-  <div id="roadmap" class="section">
-    <h2>Пътна карта</h2>
-    <ul>
-      <li><strong>Стартирано:</strong> Токенът е активен, сайтът е онлайн</li>
-      <li><strong>Следващи стъпки:</strong> Промоция, листинг, маркетинг</li>
-    </ul>
-  </div>
-
-  <div id="invest" class="section">
-    <h2>Инвестирай</h2>
-    <p>Първите 10 инвеститори получават 25% бонус токени!</p>
-  </div>
-
-  <div id="buy" class="section">
-    <h2>Купи токена</h2>
-    <p>Линк към PancakeSwap или друг DEX ще бъде добавен тук.</p>
-  </div>
-
-  <div id="contact" class="section">
-    <h2>Контакт</h2>
-    <p>Email: andromedatoken01@gmail.com</p>
-  </div>
+  <div id="content"></div>
 
   <script>
-    function navigate(select) {
-      // Скриваме всички
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(sec => sec.classList.remove('active'));
+    function showSection(section) {
+      const mainContent = document.getElementById('main-content');
+      const content = document.getElementById('content');
 
-      // Показваме избрания
-      const chosen = document.getElementById(select.value);
-      if (chosen) {
-        chosen.classList.add('active');
-        chosen.scrollIntoView({ behavior: 'smooth' });
+      mainContent.style.display = 'none';
+      content.style.display = 'block';
+
+      if (section === 'whitepaper') {
+        content.innerHTML = `
+          <h2>Бяла книга</h2>
+          <p><a href="Андромеда_Бяла книга.pdf" target="_blank">Изтеглете PDF</a></p>
+        `;
+      } else if (section === 'roadmap') {
+        content.innerHTML = `
+          <h2>Пътна карта</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li><strong>Текуща фаза:</strong> Активен токен, уайтпейпър, сайт</li>
+            <li><strong>Следващи стъпки:</strong> Маркетинг, листинг, партньорства</li>
+          </ul>
+        `;
+      } else if (section === 'contact') {
+        content.innerHTML = `
+          <h2>Контакт</h2>
+          <p>Email: andromedatoken01@gmail.com</p>
+        `;
+      } else {
+        mainContent.style.display = 'flex';
+        content.style.display = 'none';
       }
     }
   </script>
+
 </body>
 </html>
 
